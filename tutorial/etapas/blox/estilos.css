@@ -1,0 +1,1061 @@
+/* 1. Identidade visual — cores extraídas da loja de referência. */
+@font-face {
+  font-family:Nunito;
+  src:url('fontes/nunito.ttf') format('truetype');
+  font-display:swap
+}
+
+@font-face {
+  font-family:Cinzel;
+  src:url('fontes/cinzel.ttf') format('truetype');
+  font-display:swap
+}
+
+@font-face {
+  font-family:'Cinzel Decorative';
+  src:url('fontes/cinzel-decorative.ttf') format('truetype');
+  font-display:swap
+}
+
+:root {
+  --fundo:#060b18;
+  --texto:#e8dfc8;
+  --cartao:#0d1528;
+  --secundario:#12213d;
+  --suave:#5a7296;
+  --borda:#6496dc26;
+  --dourado:#f0a500;
+  --ouro-claro:#fbbf24;
+  --verde:#34d399;
+  --violeta:#c084fc
+}
+
+* {
+  box-sizing:border-box
+}
+
+body {
+  margin:0;
+  background:radial-gradient(ellipse at 0 20%,#162d6b25,transparent 40%),radial-gradient(ellipse at 100% 40%,#7c3aed15,transparent 40%),var(--fundo);
+  color:var(--texto);
+  font:14px Nunito,Arial,sans-serif;
+  line-height:1.5
+}
+
+button,input,select {
+  font:inherit
+}
+
+button,a,input,select {
+  -webkit-tap-highlight-color:transparent
+}
+
+button {
+  cursor:pointer
+}
+
+button:disabled {
+  cursor:not-allowed;
+  opacity:.45
+}
+
+button,a {
+  touch-action:manipulation
+}
+
+a {
+  color:inherit
+}
+
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
+  outline:2px solid var(--ouro-claro);
+  outline-offset:4px
+}
+
+button {
+  transition:background .2s,transform .2s,border-color .2s
+}
+
+button:active:not(:disabled) {
+  transform:scale(.96)
+}
+
+[hidden] {
+  display:none!important
+}
+
+h1,h2,h3,p {
+  margin:0
+}
+
+h1,h2 {
+  font-family:'Cinzel Decorative',Georgia,serif
+}
+
+h3 {
+  font-family:Cinzel,Georgia,serif
+}
+
+em {
+  font-style:normal;
+  color:var(--ouro-claro)
+}
+
+small {
+  font-size:11px
+}
+
+.limite {
+  max-width:1280px;
+  margin:auto;
+  padding-left:16px;
+  padding-right:16px
+}
+
+.texto-suave {
+  color:var(--suave)
+}
+
+.somente-leitor,.pular-conteudo:not(:focus) {
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip-path:inset(50%)
+}
+
+.pular-conteudo:focus {
+  position:fixed;
+  top:10px;
+  left:10px;
+  background:var(--dourado);
+  color:#000;
+  padding:10px;
+  z-index:100
+}
+
+/* 2. Cabeçalho e apresentação. */
+.cabecalho {
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:#060b18eb;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--borda)
+}
+
+.barra-superior {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding-top:12px;
+  padding-bottom:12px
+}
+
+.marca {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+  text-decoration:none
+}
+
+.marca strong {
+  display:block;
+  font:700 16px 'Cinzel Decorative',Georgia,serif;
+  color:var(--ouro-claro);
+  line-height:1.2
+}
+
+.marca small {
+  display:block;
+  font:10px monospace;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--suave)
+}
+
+.abas {
+  display:flex;
+  background:var(--secundario);
+  padding:4px;
+  border-radius:8px
+}
+
+.abas button {
+  background:none;
+  border:0;
+  padding:7px 16px;
+  border-radius:6px;
+  color:var(--suave);
+  font:700 12px Cinzel,Georgia,serif;
+  white-space:nowrap
+}
+
+.abas button.ativo,.filtros button.ativo {
+  background:var(--dourado);
+  color:#060b18
+}
+
+.campo-busca {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  max-width:320px;
+  flex:1;
+  background:var(--secundario);
+  border:1px solid var(--borda);
+  border-radius:8px;
+  padding:7px 12px;
+  color:var(--suave)
+}
+
+.campo-busca input {
+  min-width:0;
+  width:100%;
+  background:none;
+  border:0;
+  outline:0;
+  color:var(--texto)
+}
+
+.campo-busca:focus-within {
+  box-shadow:0 0 0 2px #f0a50066
+}
+
+.saldo-superior {
+  white-space:nowrap;
+  background:var(--secundario);
+  border:1px solid var(--borda);
+  padding:6px 12px;
+  border-radius:8px;
+  color:var(--ouro-claro);
+  font-family:monospace
+}
+
+.saldo-superior small {
+  color:#b8780b
+}
+
+.botao-icone {
+  position:relative;
+  border:1px solid var(--borda);
+  background:var(--secundario);
+  color:var(--texto);
+  border-radius:8px;
+  font-size:18px;
+  padding:6px 10px
+}
+
+.botao-icone span {
+  position:absolute;
+  top:-8px;
+  right:-6px;
+  background:var(--dourado);
+  border-radius:20px;
+  padding:1px 5px;
+  font:bold 10px monospace;
+  color:#000
+}
+
+.apresentacao {
+  padding:56px 0;
+  border-bottom:1px solid var(--borda);
+  background:radial-gradient(circle at 20% 50%,#f0a50012,transparent 40%),radial-gradient(circle at 80% 30%,#7c3aed28,transparent 40%),linear-gradient(135deg,#060b18,#0d1a3a 40%,#0a1228 70%,#06100e)
+}
+
+.sobretitulo {
+  font:12px monospace;
+  letter-spacing:3.6px;
+  text-transform:uppercase;
+  color:var(--dourado);
+  margin-bottom:12px
+}
+
+h1 {
+  font-size:36px;
+  font-weight:900;
+  line-height:1.2;
+  margin-bottom:16px
+}
+
+.indicadores {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap
+}
+
+.selo {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  border:1px solid;
+  border-radius:30px;
+  padding:7px 16px;
+  font:12px monospace
+}
+
+.dourado {
+  border-color:#f0a5004d;
+  background:#78350f33;
+  color:var(--ouro-claro)
+}
+
+.verde {
+  border-color:#10b9814d;
+  background:#064e3b33;
+  color:var(--verde)
+}
+
+/* 3. Filtros, indicadores e cards. */
+.conteudo {
+  padding-top:32px;
+  padding-bottom:32px
+}
+
+.ferramentas {
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:32px
+}
+
+.filtros {
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding-bottom:4px
+}
+
+.filtros button {
+  border:1px solid var(--borda);
+  background:var(--secundario);
+  color:var(--suave);
+  padding:8px 16px;
+  border-radius:24px;
+  font:700 12px Cinzel,Georgia,serif;
+  white-space:nowrap
+}
+
+.filtros button.ativo {
+  box-shadow:0 0 12px #f0a50055;
+  border-color:var(--dourado)
+}
+
+.ordenacao {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font:12px monospace;
+  color:var(--suave);
+  white-space:nowrap
+}
+
+.ordenacao select {
+  color:var(--texto);
+  background:var(--secundario);
+  padding:8px 12px;
+  border:1px solid var(--borda);
+  border-radius:8px
+}
+
+.estatisticas {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:32px
+}
+
+.estatistica {
+  background:linear-gradient(135deg,#0d1528,#111e3a);
+  border:1px solid var(--borda);
+  border-radius:12px;
+  padding:16px
+}
+
+.estatistica p {
+  font:10px monospace;
+  letter-spacing:1px;
+  color:var(--suave);
+  text-transform:uppercase;
+  margin-bottom:4px
+}
+
+.estatistica p span {
+  font-size:18px;
+  margin-right:8px
+}
+
+.estatistica strong {
+  font:bold 18px monospace;
+  color:var(--ouro-claro)
+}
+
+.estatistica:nth-child(2) strong {
+  color:var(--verde)
+}
+
+.estatistica:nth-child(3) strong {
+  color:var(--violeta)
+}
+
+.grade-frutas {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:16px
+}
+
+.cartao-fruta {
+  --cor-raridade:#9ca3af;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--cor-raridade) 40%,transparent);
+  border-radius:12px;
+  background:linear-gradient(160deg,#0d1528 60%,#111e3a);
+  transition:transform .3s;
+  box-shadow:0 0 16px color-mix(in srgb,var(--cor-raridade) 13%,transparent)
+}
+
+.cartao-fruta:hover {
+  transform:translateY(-4px) scale(1.02)
+}
+
+.mitico {
+  --cor-raridade:#c084fc
+}
+
+.lendario {
+  --cor-raridade:#fbbf24
+}
+
+.raro {
+  --cor-raridade:#60a5fa
+}
+
+.incomum {
+  --cor-raridade:#4ade80
+}
+
+.destaque:before {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#fbbf24,transparent)
+}
+
+.topo-fruta {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:24px 16px 12px
+}
+
+.ilustracao-fruta {
+  width:64px;
+  height:64px;
+  flex-shrink:0;
+  background-image:url('imagens/frutas-atlas.png');
+  background-size:700% 500%;
+  border-radius:12px;
+  filter:drop-shadow(0 0 9px color-mix(in srgb,var(--cor-raridade) 50%,transparent));
+  transition:transform .3s
+}
+
+.cartao-fruta:hover .ilustracao-fruta {
+  transform:scale(1.1)
+}
+
+.etiquetas {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px
+}
+
+.etiqueta {
+  font:bold 10px monospace;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  border-radius:20px;
+  padding:2px 8px;
+  background:color-mix(in srgb,var(--cor-raridade) 15%,transparent);
+  color:var(--cor-raridade)
+}
+
+.etiqueta-tipo {
+  color:#67e8f9;
+  background:#164e6380;
+  letter-spacing:1px
+}
+
+.tipo-logia {
+  color:#fdba74;
+  background:#7c2d1280
+}
+
+.tipo-zoan {
+  color:#bef264;
+  background:#36531480
+}
+
+.corpo-fruta {
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:0 16px 16px;
+  gap:8px
+}
+
+.corpo-fruta h3 {
+  font-size:14px;
+  line-height:1.25
+}
+
+.descricao-fruta {
+  color:var(--suave);
+  font-size:12px;
+  line-height:1.6;
+  flex:1
+}
+
+.poder-fruta {
+  font:12px monospace;
+  color:var(--cor-raridade)
+}
+
+.preco-fruta {
+  display:flex;
+  gap:6px;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:8px;
+  border-top:1px solid var(--borda);
+  margin-top:4px
+}
+
+.preco-fruta strong {
+  font:bold 14px monospace;
+  color:var(--ouro-claro)
+}
+
+.preco-fruta small {
+  font:10px monospace;
+  color:#b8780b
+}
+
+.botao-dourado,.comprar {
+  font:700 12px Cinzel,Georgia,serif;
+  border:0;
+  border-radius:8px;
+  padding:8px 12px;
+  background:var(--dourado);
+  color:#060b18
+}
+
+.botao-dourado:hover,.comprar:hover {
+  background:var(--ouro-claro)
+}
+
+.esgotado {
+  position:absolute;
+  inset:0;
+  background:#0009;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+  pointer-events:none
+}
+
+.esgotado span {
+  color:#f87171;
+  background:#000b;
+  border:1px solid #ef444466;
+  border-radius:4px;
+  padding:4px 12px;
+  font:bold 12px monospace;
+  letter-spacing:1px;
+  text-transform:uppercase
+}
+
+.sem-resultados {
+  text-align:center;
+  padding:80px 0;
+  color:var(--suave)
+}
+
+.sem-resultados>span {
+  font-size:48px
+}
+
+.botao-texto {
+  color:var(--ouro-claro);
+  background:none;
+  border:0;
+  padding:10px;
+  font-size:12px
+}
+
+.botao-texto:hover {
+  text-decoration:underline
+}
+
+/* 4. Renda e roleta. */
+h2 {
+  font-size:24px
+}
+
+h3 small {
+  font:12px monospace;
+  color:var(--suave)
+}
+
+.resumo-saldo {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px 20px;
+  border:1px solid #f0a5004d;
+  background:linear-gradient(135deg,#1a1200,#0d1528);
+  border-radius:12px;
+  margin:32px 0;
+  font-size:30px
+}
+
+.resumo-saldo small {
+  display:block;
+  font:12px monospace;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#b8780b
+}
+
+.resumo-saldo strong {
+  display:block;
+  font:bold 24px monospace;
+  color:var(--ouro-claro)
+}
+
+.colunas-renda {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px
+}
+
+.colunas-renda h3,.secao-trabalhos h3 {
+  font-size:16px;
+  margin-bottom:16px
+}
+
+.lista-missoes {
+  display:grid;
+  gap:12px
+}
+
+.missao,.trabalho {
+  border:1px solid var(--borda);
+  background:linear-gradient(135deg,#0d1528,#111e3a);
+  border-radius:12px;
+  padding:16px
+}
+
+.missao {
+  display:flex;
+  align-items:center;
+  gap:16px
+}
+
+.missao>span {
+  font-size:24px
+}
+
+.missao>div {
+  flex:1
+}
+
+.missao h4,.trabalho h4 {
+  font:700 14px Cinzel,Georgia,serif;
+  margin:0 0 4px
+}
+
+.missao p,.trabalho p {
+  font-size:12px;
+  color:var(--suave)
+}
+
+.missao b,.trabalho b {
+  color:var(--ouro-claro);
+  font:12px monospace
+}
+
+.missao button {
+  border:0;
+  background:none;
+  color:var(--dourado);
+  font-size:24px;
+  padding:8px;
+  min-width:44px
+}
+
+.missao.concluida {
+  opacity:.55;
+  border-color:#10b98144
+}
+
+.dificuldade {
+  font:9px monospace;
+  color:var(--verde);
+  margin-left:6px
+}
+
+.secao-roleta {
+  text-align:center
+}
+
+.secao-roleta h3 {
+  text-align:left
+}
+
+.moldura-roleta {
+  width:256px;
+  height:256px;
+  position:relative;
+  margin:0 auto 16px
+}
+
+.ponteiro {
+  position:absolute;
+  top:-4px;
+  left:calc(50% - 10px);
+  z-index:2;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-top:22px solid var(--dourado)
+}
+
+#roleta {
+  width:100%;
+  height:100%;
+  transition:transform 4s cubic-bezier(.17,0,.05,1)
+}
+
+.secao-roleta .botao-dourado {
+  padding:12px 32px;
+  font-size:14px
+}
+
+.secao-roleta .texto-suave {
+  font:12px monospace;
+  margin-top:8px
+}
+
+#premio-roleta {
+  min-height:30px;
+  color:var(--ouro-claro);
+  font:bold 20px monospace
+}
+
+.secao-trabalhos {
+  margin-top:40px
+}
+
+.grade-trabalhos {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px
+}
+
+.trabalho {
+  padding:20px
+}
+
+.trabalho h4 {
+  margin-bottom:4px
+}
+
+.trabalho .linha-trabalho {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:12px
+}
+
+.linha-trabalho>span {
+  font-size:30px
+}
+
+.trabalho button {
+  width:100%;
+  background:var(--secundario);
+  border:1px solid var(--borda);
+  padding:8px;
+  border-radius:8px;
+  color:var(--texto);
+  margin-top:12px;
+  font:700 12px Cinzel,Georgia,serif
+}
+
+.trabalho progress {
+  display:block;
+  width:100%;
+  height:6px;
+  margin-top:10px;
+  accent-color:var(--dourado)
+}
+
+/* 5. Carrinho modal, rodapé e retorno de ações. */
+.rodape {
+  border-top:1px solid var(--borda);
+  margin-top:64px;
+  padding:32px 16px;
+  text-align:center
+}
+
+.rodape p {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:var(--ouro-claro);
+  font:14px 'Cinzel Decorative',Georgia,serif;
+  margin-bottom:8px
+}
+
+.rodape small {
+  font:12px monospace;
+  color:var(--suave)
+}
+
+dialog {
+  position:fixed;
+  inset:0 0 0 auto;
+  margin:0;
+  height:100dvh;
+  max-height:none;
+  width:min(100%,384px);
+  max-width:none;
+  border:0;
+  border-left:1px solid var(--borda);
+  background:#080f20;
+  color:var(--texto);
+  padding:0
+}
+
+dialog[open] {
+  display:flex;
+  flex-direction:column
+}
+
+dialog::backdrop {
+  background:#000b;
+  backdrop-filter:blur(4px)
+}
+
+.topo-carrinho {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 20px;
+  border-bottom:1px solid var(--borda)
+}
+
+.topo-carrinho h2 {
+  font:700 16px Cinzel,Georgia,serif
+}
+
+.lista-carrinho {
+  flex:1;
+  overflow:auto;
+  padding:12px 16px
+}
+
+.linha-carrinho {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+  border:1px solid var(--borda);
+  padding:12px;
+  border-radius:8px;
+  background:var(--secundario)
+}
+
+.linha-carrinho>div:nth-child(2) {
+  flex:1
+}
+
+.linha-carrinho h3 {
+  font-size:12px
+}
+
+.linha-carrinho p {
+  color:var(--ouro-claro);
+  font:12px monospace
+}
+
+.linha-carrinho .ilustracao-fruta {
+  width:36px;
+  height:36px
+}
+
+.resumo-carrinho {
+  padding:20px;
+  border-top:1px solid var(--borda)
+}
+
+.resumo-carrinho p {
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:12px
+}
+
+.resumo-carrinho strong {
+  font:bold 18px monospace;
+  color:var(--ouro-claro)
+}
+
+.resumo-carrinho button {
+  width:100%
+}
+
+.erro {
+  color:#f87171;
+  font-size:12px
+}
+
+.notificacao {
+  position:fixed;
+  z-index:60;
+  top:80px;
+  left:50%;
+  transform:translateX(-50%);
+  max-width:calc(100% - 32px);
+  background:#10b981;
+  color:white;
+  padding:10px 20px;
+  border-radius:20px;
+  font-size:13px;
+  box-shadow:0 4px 30px #0006;
+  text-align:center
+}
+
+.notificacao.erro {
+  background:#dc2626;
+  color:white
+}
+
+/* 6. A mesma hierarquia se adapta a celulares. */
+@media(max-width:1023px) {
+  .grade-frutas {
+    grid-template-columns:repeat(4,minmax(0,1fr))
+  }
+
+  .saldo-superior {
+    display:none
+  }
+
+  .barra-superior {
+    gap:12px
+  }
+
+}
+
+@media(max-width:767px) {
+  .grade-frutas {
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
+
+  .campo-busca {
+    order:5;
+    max-width:none;
+    flex-basis:100%
+  }
+
+  .barra-superior {
+    flex-wrap:wrap
+  }
+
+  .marca {
+    margin-right:auto
+  }
+
+  .apresentacao {
+    padding:40px 0
+  }
+
+  h1 {
+    font-size:28px
+  }
+
+  .colunas-renda {
+    grid-template-columns:1fr
+  }
+
+}
+
+@media(max-width:639px) {
+  .grade-frutas {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px
+  }
+
+  .estatisticas {
+    grid-template-columns:1fr 1fr
+  }
+
+  .ferramentas {
+    flex-direction:column
+  }
+
+  .ordenacao {
+    justify-content:flex-end
+  }
+
+  .grade-trabalhos {
+    grid-template-columns:1fr
+  }
+
+  .abas {
+    order:4;
+    width:100%
+  }
+
+  .abas button {
+    flex:1
+  }
+
+  .preco-fruta {
+    flex-wrap:wrap
+  }
+
+  .corpo-fruta,.topo-fruta {
+    padding-left:12px;
+    padding-right:12px
+  }
+
+  .rodape small {
+    font-size:10px
+  }
+
+  .marca strong {
+    font-size:15px
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    transition:none!important;
+    animation:none!important;
+    scroll-behavior:auto!important
+  }
+
+}
+

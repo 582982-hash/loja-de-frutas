@@ -1,0 +1,264 @@
+/* 1. Identidade visual — cores extraídas da loja de referência. */
+@font-face {
+  font-family:Nunito;
+  src:url('fontes/nunito.ttf') format('truetype');
+  font-display:swap
+}
+@font-face {
+  font-family:Cinzel;
+  src:url('fontes/cinzel.ttf') format('truetype');
+  font-display:swap
+}
+@font-face {
+  font-family:'Cinzel Decorative';
+  src:url('fontes/cinzel-decorative.ttf') format('truetype');
+  font-display:swap
+}
+:root {
+  --fundo:#060b18;
+  --texto:#e8dfc8;
+  --cartao:#0d1528;
+  --secundario:#12213d;
+  --suave:#5a7296;
+  --borda:#6496dc26;
+  --dourado:#f0a500;
+  --ouro-claro:#fbbf24;
+  --verde:#34d399;
+  --violeta:#c084fc
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  background:radial-gradient(ellipse at 0 20%,#162d6b25,transparent 40%),radial-gradient(ellipse at 100% 40%,#7c3aed15,transparent 40%),var(--fundo);
+  color:var(--texto);
+  font:14px Nunito,Arial,sans-serif;
+  line-height:1.5
+}
+button,input,select {
+  font:inherit
+}
+button,a,input,select {
+  -webkit-tap-highlight-color:transparent
+}
+button {
+  cursor:pointer
+}
+button:disabled {
+  cursor:not-allowed;
+  opacity:.45
+}
+button,a {
+  touch-action:manipulation
+}
+a {
+  color:inherit
+}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
+  outline:2px solid var(--ouro-claro);
+  outline-offset:4px
+}
+button {
+  transition:background .2s,transform .2s,border-color .2s
+}
+button:active:not(:disabled) {
+  transform:scale(.96)
+}
+[hidden] {
+  display:none!important
+}
+h1,h2,h3,p {
+  margin:0
+}
+h1,h2 {
+  font-family:'Cinzel Decorative',Georgia,serif
+}
+h3 {
+  font-family:Cinzel,Georgia,serif
+}
+em {
+  font-style:normal;
+  color:var(--ouro-claro)
+}
+small {
+  font-size:11px
+}
+.limite {
+  max-width:1280px;
+  margin:auto;
+  padding-left:16px;
+  padding-right:16px
+}
+.texto-suave {
+  color:var(--suave)
+}
+.somente-leitor,.pular-conteudo:not(:focus) {
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip-path:inset(50%)
+}
+.pular-conteudo:focus {
+  position:fixed;
+  top:10px;
+  left:10px;
+  background:var(--dourado);
+  color:#000;
+  padding:10px;
+  z-index:100
+}
+/* 2. Cabeçalho e apresentação. */
+.cabecalho {
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:#060b18eb;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--borda)
+}
+.barra-superior {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding-top:12px;
+  padding-bottom:12px
+}
+.marca {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+  text-decoration:none
+}
+.marca strong {
+  display:block;
+  font:700 16px 'Cinzel Decorative',Georgia,serif;
+  color:var(--ouro-claro);
+  line-height:1.2
+}
+.marca small {
+  display:block;
+  font:10px monospace;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--suave)
+}
+.abas {
+  display:flex;
+  background:var(--secundario);
+  padding:4px;
+  border-radius:8px
+}
+.abas button {
+  background:none;
+  border:0;
+  padding:7px 16px;
+  border-radius:6px;
+  color:var(--suave);
+  font:700 12px Cinzel,Georgia,serif;
+  white-space:nowrap
+}
+.abas button.ativo,.filtros button.ativo {
+  background:var(--dourado);
+  color:#060b18
+}
+.campo-busca {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  max-width:320px;
+  flex:1;
+  background:var(--secundario);
+  border:1px solid var(--borda);
+  border-radius:8px;
+  padding:7px 12px;
+  color:var(--suave)
+}
+.campo-busca input {
+  min-width:0;
+  width:100%;
+  background:none;
+  border:0;
+  outline:0;
+  color:var(--texto)
+}
+.campo-busca:focus-within {
+  box-shadow:0 0 0 2px #f0a50066
+}
+.saldo-superior {
+  white-space:nowrap;
+  background:var(--secundario);
+  border:1px solid var(--borda);
+  padding:6px 12px;
+  border-radius:8px;
+  color:var(--ouro-claro);
+  font-family:monospace
+}
+.saldo-superior small {
+  color:#b8780b
+}
+.botao-icone {
+  position:relative;
+  border:1px solid var(--borda);
+  background:var(--secundario);
+  color:var(--texto);
+  border-radius:8px;
+  font-size:18px;
+  padding:6px 10px
+}
+.botao-icone span {
+  position:absolute;
+  top:-8px;
+  right:-6px;
+  background:var(--dourado);
+  border-radius:20px;
+  padding:1px 5px;
+  font:bold 10px monospace;
+  color:#000
+}
+.apresentacao {
+  padding:56px 0;
+  border-bottom:1px solid var(--borda);
+  background:radial-gradient(circle at 20% 50%,#f0a50012,transparent 40%),radial-gradient(circle at 80% 30%,#7c3aed28,transparent 40%),linear-gradient(135deg,#060b18,#0d1a3a 40%,#0a1228 70%,#06100e)
+}
+.sobretitulo {
+  font:12px monospace;
+  letter-spacing:3.6px;
+  text-transform:uppercase;
+  color:var(--dourado);
+  margin-bottom:12px
+}
+h1 {
+  font-size:36px;
+  font-weight:900;
+  line-height:1.2;
+  margin-bottom:16px
+}
+.indicadores {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap
+}
+.selo {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  border:1px solid;
+  border-radius:30px;
+  padding:7px 16px;
+  font:12px monospace
+}
+.dourado {
+  border-color:#f0a5004d;
+  background:#78350f33;
+  color:var(--ouro-claro)
+}
+.verde {
+  border-color:#10b9814d;
+  background:#064e3b33;
+  color:var(--verde)
+}
+/* A adaptação para celular entra na etapa 6. */

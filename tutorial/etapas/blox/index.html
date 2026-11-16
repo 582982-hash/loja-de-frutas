@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060b18">
+    <meta name="description" content="Blox Fruits Store — explore frutas, complete missões e conquiste os Sete Mares.">
+    <title>
+      Blox Fruits Store
+    </title>
+    <link rel="icon" href="imagens/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="scripts/dados.js" defer>
+    </script>
+    <script src="scripts/loja.js" defer>
+    </script>
+    <script src="scripts/renda.js" defer>
+    </script>
+    <script src="scripts/principal.js" defer>
+    </script>
+  </head>
+  <body>
+    <a class="pular-conteudo" href="#conteudo">
+      Ir para o conteúdo
+    </a>
+    <header class="cabecalho">
+      <div class="limite barra-superior">
+        <a class="marca" href="index.html" aria-label="Blox Fruits — início">
+          <img src="imagens/logo.svg" alt="" width="34" height="34">
+          <span>
+            <strong>
+              Blox Fruits
+            </strong>
+            <small>
+              Grand Line Store
+            </small>
+          </span>
+        </a>
+        <nav class="abas" aria-label="Navegação principal">
+          <button class="ativo" data-pagina="loja" aria-pressed="true">
+            ♧ Loja
+          </button>
+          <button data-pagina="ganhar" aria-pressed="false">
+            ↗ Ganhar Beli
+          </button>
+        </nav>
+        <label class="campo-busca">
+          <span class="somente-leitor">
+            Buscar frutas
+          </span>
+          <span aria-hidden="true">
+            ⌕
+          </span>
+          <input id="busca" type="search" placeholder="Buscar frutas..." autocomplete="off">
+        </label>
+        <div class="saldo-superior">
+          ♧
+          <strong data-saldo>
+            50.000
+          </strong>
+          <small>
+            Beli
+          </small>
+        </div>
+        <button id="abrir-carrinho" class="botao-icone" aria-label="Abrir carrinho">
+          🛒
+          <span id="quantidade-carrinho" hidden>
+            0
+          </span>
+        </button>
+      </div>
+    </header>
+    <section class="apresentacao">
+      <div class="limite">
+        <p class="sobretitulo">
+          Grand Line Trading Co.
+        </p>
+        <h1>
+          <span id="verbo-apresentacao">
+            Conquiste os
+          </span>
+          <br>
+          <em>
+            Sete Mares
+          </em>
+        </h1>
+        <div class="indicadores">
+          <span class="selo dourado" id="disponibilidade">
+          </span>
+          <span class="selo verde">
+            ♧ Saldo:
+            <b data-saldo>
+              50.000
+            </b>
+            Beli
+          </span>
+        </div>
+      </div>
+    </section>
+    <main id="conteudo" class="limite conteudo">
+      <section id="pagina-loja" aria-label="Loja de frutas">
+        <div class="ferramentas">
+          <div id="filtros" class="filtros" role="group" aria-label="Tipo de fruta">
+            <button class="ativo" data-tipo="todas" aria-pressed="true">
+              ◎ Todas
+            </button>
+            <button data-tipo="paramecia" aria-pressed="false">
+              ϟ Paramecia
+            </button>
+            <button data-tipo="logia" aria-pressed="false">
+              ♨ Logia
+            </button>
+            <button data-tipo="zoan" aria-pressed="false">
+              🐾 Zoan
+            </button>
+          </div>
+          <label class="ordenacao">
+            Ordenar:
+            <select id="ordenacao">
+              <option value="raridade">
+                Raridade
+              </option>
+              <option value="menor">
+                Menor preço
+              </option>
+              <option value="maior">
+                Maior preço
+              </option>
+              <option value="nome">
+                Nome
+              </option>
+            </select>
+          </label>
+        </div>
+        <div class="estatisticas" id="estatisticas">
+        </div>
+        <p id="resultado-busca" class="somente-leitor" aria-live="polite">
+        </p>
+        <div class="grade-frutas" id="catalogo">
+        </div>
+        <div id="sem-resultados" class="sem-resultados" hidden>
+          <span>
+            🔍
+          </span>
+          <p>
+            Nenhuma fruta encontrada
+          </p>
+          <button id="limpar-filtros" class="botao-texto">
+            Limpar filtros
+          </button>
+        </div>
+      </section>
+      <section id="pagina-ganhar" hidden aria-label="Ganhar Beli">
+        <p class="sobretitulo">
+          Sistema de Renda
+        </p>
+        <h2>
+          Ganhar
+          <em>
+            Beli
+          </em>
+        </h2>
+        <p class="texto-suave">
+          Complete missões, trabalhe nos mares e tente a sorte na roleta.
+        </p>
+        <div class="resumo-saldo">
+          💰
+          <div>
+            <small>
+              Seu saldo atual
+            </small>
+            <strong>
+              <span data-saldo>
+                50.000
+              </span>
+              Beli
+            </strong>
+          </div>
+        </div>
+        <div class="colunas-renda">
+          <section>
+            <h3>
+              ◎ Missões do Dia
+              <small id="progresso-missoes">
+              </small>
+            </h3>
+            <div id="lista-missoes" class="lista-missoes">
+            </div>
+          </section>
+          <section class="secao-roleta">
+            <h3>
+              ↶ Roleta da Sorte
+            </h3>
+            <div class="moldura-roleta">
+              <span class="ponteiro">
+              </span>
+              <svg id="roleta" viewbox="0 0 300 300" role="img" aria-label="Roleta de prêmios em Beli">
+              </svg>
+            </div>
+            <p id="premio-roleta" aria-live="polite">
+            </p>
+            <button id="girar-roleta" class="botao-dourado">
+              🎰 Girar Roleta
+            </button>
+            <p class="texto-suave">
+              Cooldown: 2 minutos
+            </p>
+          </section>
+        </div>
+        <section class="secao-trabalhos">
+          <h3>
+            ⚓ Trabalhos nos Mares
+          </h3>
+          <div id="lista-trabalhos" class="grade-trabalhos">
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer class="rodape">
+      <p>
+        <img src="imagens/logo.svg" alt="" width="26" height="26">
+        Blox Fruits Store
+      </p>
+      <small>
+        Grand Line Trading Co. — Todos os direitos reservados aos Sete Mares
+      </small>
+    </footer>
+    <dialog id="carrinho" aria-labelledby="titulo-carrinho">
+      <div class="topo-carrinho">
+        <h2 id="titulo-carrinho">
+          🛒 Carrinho
+          <small id="itens-carrinho">
+          </small>
+        </h2>
+        <button id="fechar-carrinho" class="botao-icone" aria-label="Fechar carrinho">
+          ×
+        </button>
+      </div>
+      <div id="lista-carrinho" class="lista-carrinho">
+      </div>
+      <div class="resumo-carrinho">
+        <p>
+          Total
+          <strong id="total-carrinho">
+            0 Beli
+          </strong>
+        </p>
+        <p>
+          Seu saldo
+          <span data-saldo>
+            50.000
+          </span>
+        </p>
+        <p id="aviso-saldo" class="erro" hidden>
+          Saldo insuficiente! Ganhe mais Beli.
+        </p>
+        <button id="finalizar-compra" class="botao-dourado">
+          Finalizar Compra
+        </button>
+        <button id="esvaziar-carrinho" class="botao-texto">
+          Limpar carrinho
+        </button>
+      </div>
+    </dialog>
+    <div id="notificacao" class="notificacao" role="status" hidden>
+    </div>
+    <noscript>
+      <p>
+        Ative o JavaScript para usar o catálogo, os filtros e o carrinho.
+      </p>
+    </noscript>
+  </body>
+</html>
